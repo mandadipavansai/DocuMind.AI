@@ -1,18 +1,32 @@
-# Virtual environment
+# Python Virtual Environment
 .venv/
 venv/
-
-# Python cache
-__pycache__/
+**/__pycache__/
 *.pyc
 
-# Local data/DB
+# Backend Data & Temporary Files (Adjust if needed)
 backend/chroma_db/
 backend/sample_data/
 backend/temp_reports/
 *.pdf
 
-# IDE/OS specific
+# Frontend Dependencies & Build Output
+frontend/node_modules/
+frontend/dist/
+frontend/.env*
+frontend/.eslintcache
+*.log
+
+# IDE / Editor Folders
 .vscode/
+.idea/
+
+# Operating System Files
 .DS_Store
 Thumbs.db
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
