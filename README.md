@@ -1,4 +1,4 @@
-# HealthDoc Assistant AI 🩺📄
+# DocuMind.AI — Your Local AI Document Assistant📄
 
 [![Python Version](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-FastAPI-green.svg)](https://fastapi.tiangolo.com/)
