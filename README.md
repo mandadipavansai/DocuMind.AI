@@ -2,78 +2,112 @@
 
 [![Python Version](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-FastAPI-green.svg)](https://fastapi.tiangolo.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ## 👋 Introduction
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
-Hi there! I'm **[Your Name/Mandadipavansai]**, and welcome to the **HealthDoc Assistant AI**.
+👋 Introduction
 
-This project aims to simplify how healthcare professionals interact with complex medical documents. In today's world, managing information scattered across PDFs, reports, images, and various file types can be overwhelming. This AI assistant provides a unified platform to:
+Hi, I’m Mandadi Pavan Sai Kumar — welcome to DocuMind.AI.
 
-1.  **Ingest** diverse medical documents.
-2.  **Understand** the content through intelligent conversation (Q&A).
-3.  **Synthesize** key information into structured, downloadable reports.
+This project is designed to make working with any kind of document — research papers, reports, business PDFs, academic notes, or even medical files — faster and easier.
+Instead of manually reading through pages, you can upload your files, chat with them, and even generate structured, professional summary reports in just a few clicks.
 
-It leverages Retrieval-Augmented Generation (RAG) for accurate, context-aware answers and an agentic workflow for sophisticated report creation.
-
----
-
-## ✨ Features
-
-* 📄 **Multi-Format Document Handling:** Seamlessly upload and process PDFs, DOCX files, and images (PNG, JPG) containing text, tables, or charts.
-* 💬 **Intelligent Q&A:** Chat directly with your documents. Get accurate answers grounded in the provided content using a RAG pipeline.
-* 📊 **Agentic Report Generation:** Request structured PDF reports containing specific sections like Introduction, Clinical Findings, Prevalence Data, Risk Factors, Figures, Tables, and Summaries.
-* 🧠 **Advanced Agent Workflow:** Utilizes LangGraph to orchestrate specialized agents (e.g., extraction, summarization, assembly) for reliable report building.
-* 💾 **Local Vector Storage:** Employs ChromaDB for efficient local storage and retrieval of document embeddings.
-* 💻 **Local LLM Powered:** Integrates with Ollama (specifically tested with `llama3:8b`) for privacy and control over language processing.
-* 🌐 **Simple Web Interface:** An intuitive frontend allows for easy document upload, interactive chat, and report downloading.
+DocuMind.AI combines Retrieval-Augmented Generation (RAG) and an agent-based workflow to deliver accurate, context-aware answers — all running locally for speed, privacy, and full data control.
 
 ---
 
+✨ Features
 
+📂 Multi-Format Document Handling: Upload and process PDFs, DOCX files, and image files (PNG, JPG) containing text, tables, or charts.
 
-## 🛠️ Tech Stack
+💬 Intelligent Q&A: Ask any question about your document and get accurate, grounded answers using an advanced RAG pipeline.
 
-This project combines several powerful technologies:
+📑 Automated Report Generation: Instantly create structured PDF reports with sections like Overview, Key Points, Insights, Figures, Tables, and Summaries.
 
-* **Backend:**
-    * **Language:** Python 3.11+
-    * **API Framework:** FastAPI
-    * **ASGI Server:** Uvicorn
-    * **AI/LLM Framework:** LangChain (Core, Community, Text Splitters), LangGraph
-    * **LLM Provider:** Ollama (using `llama3:8b`)
-    * **Embeddings:** HuggingFace Sentence Transformers (`all-MiniLM-L6-v2`) via `langchain-community`
-    * **Vector Database:** ChromaDB (local persistence)
-    * **PDF Generation:** ReportLab
-    * **OCR:** Pytesseract (requires system Tesseract installation)
-    * **File Handling:** `python-multipart`, `unstructured[pdf]`, `tqdm`
-* **Frontend:**
-    * **Framework/Library:** React (using Vite)
-    * **UI Components:** Material UI (`@mui/material`, `@mui/icons-material`)
-    * **Styling:** Emotion (`@emotion/react`, `@emotion/styled`)
-    * **API Communication:** Axios
-    * **Build Tool:** Vite
-* **Environment:** Python Virtual Environment (`venv`), Node.js/npm for frontend
+🧠 Agentic Workflow: Uses LangGraph to manage specialized agents for extraction, summarization, and report assembly.
+
+💾 Local Vector Storage: Uses ChromaDB for efficient local embedding storage and retrieval — keeping everything on your machine.
+
+💻 Local LLM Integration: Powered by Ollama (tested with llama3:8b) for private, offline language processing.
+
+🌐 User-Friendly Interface: Clean and simple web dashboard for uploading files, chatting, and downloading reports.
 
 ---
 
-## 🏗️ Architecture
 
-[Insert Your Architecture Diagram Here - e.g., an image file linked]
 
-**Brief Workflow:**
+🛠️ Tech Stack
 
-1.  **User Interaction (Frontend):** Uploads documents or sends messages via the React interface.
-2.  **API Request (FastAPI):** Backend receives requests at defined endpoints (`/upload`, `/chat`, `/generate_report`).
-3.  **Document Ingestion (`rag_module.py`):** On upload, files are processed, text/data is extracted (using Pytesseract/Unstructured if needed), chunked, embedded (HuggingFace), and stored in ChromaDB.
-4.  **Q&A (`rag_module.py`):** Chat messages trigger RAG pipeline -> Retrieve relevant chunks from ChromaDB -> Augment prompt -> Generate answer using Ollama -> Send response.
-5.  **Report Generation (`graph.py`):** Report requests initiate LangGraph workflow -> Orchestrator agent plans steps -> Calls tools (extraction, summarization via RAG/Ollama) -> Compiles structured data.
-6.  **PDF Creation (`report_generator.py`):** Receives structured data -> Renders PDF using ReportLab.
-7.  **API Response (FastAPI):** Sends chat answers or the generated PDF file back to the frontend.
+This project brings together several modern and efficient technologies:
+
+Backend:
+
+Language: Python 3.11+
+
+API Framework: FastAPI
+
+ASGI Server: Uvicorn
+
+AI Frameworks: LangChain (Core, Community, Text Splitters), LangGraph
+
+LLM Provider: Ollama (llama3:8b)
+
+Embeddings: HuggingFace Sentence Transformers (all-MiniLM-L6-v2)
+
+Vector Database: ChromaDB (local persistence)
+
+PDF Generation: ReportLab
+
+OCR: Pytesseract (requires system Tesseract installation)
+
+File Handling: python-multipart, unstructured[pdf], tqdm
+
+Frontend:
+
+Framework: React (Vite)
+
+UI Components: Material UI (@mui/material, @mui/icons-material)
+
+Styling: Emotion (@emotion/react, @emotion/styled)
+
+API Communication: Axios
+
+Build Tool: Vite
+
+Environment:
+
+Python Virtual Environment (venv)
+
+Node.js / npm for frontend
 
 ---
 
-## ⚙️ Setup & Installation
+Architecture
 
-**Prerequisites:**
+[Insert Your Architecture Diagram Here]
+
+Workflow Summary:
+
+1) Frontend (User Interaction): Uploads documents and sends questions via the web interface.
+
+2) API Layer (FastAPI): Handles endpoints for /upload, /chat, and /generate_report.
+
+3) Document Ingestion (rag_module.py): Extracts text (via OCR if needed), chunks content, embeds using HuggingFace, and stores in ChromaDB.
+
+4) Query & Answer (rag_module.py): For each question, retrieves the most relevant document chunks and generates context-aware answers using Ollama.
+
+5) Report Generation (graph.py): LangGraph coordinates multiple agents (extraction, summarization, assembly) to build structured report content.
+
+6) PDF Creation (report_generator.py): Converts structured content into a polished PDF using ReportLab.
+
+7) Response Delivery (FastAPI): Returns chat responses or downloadable PDFs to the frontend.
+
+---
+
+⚙️ Setup & Installation
+
+Prerequisites
+
+Before starting, make sure the following are installed on your system:
 
 * Python 3.11+ ([python.org](https://www.python.org/))
 * Git ([git-scm.com](https://git-scm.com/))
@@ -81,86 +115,118 @@ This project combines several powerful technologies:
 * Ollama installed and running ([ollama.com](https://ollama.com/))
 * Tesseract OCR engine installed and added to your system PATH ([Tesseract GitHub](https://github.com/tesseract-ocr/tesseract#installing-tesseract))
 
-**Steps:**
+Installation Steps
+Step 1: Clone the Repository
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/mandadipavansai/health_doc_assist.ai.git](https://github.com/mandadipavansai/health_doc_assist.ai.git) # Use your actual repo URL
-    cd health_doc_assist.ai
-    ```
-2.  **Set up Backend:**
-    ```bash
-    # Create and activate virtual environment
-    python -m venv .venv
-    .\.venv\Scripts\Activate.ps1 # Windows PowerShell
-    # source .venv/bin/activate # Linux/macOS/Git Bash
+git clone https://github.com/mandadipavansai/health_doc_assist.ai.git
+cd health_doc_assist.ai
 
-    # Install dependencies
-    cd backend
-    pip install -r requirements.txt
-    cd ..
-    ```
-3.  **Download LLM:**
-    ```bash
-    ollama pull llama3:8b
-    ```
-    *(Ensure Ollama server is running)*
-4.  **Set up Frontend:**
-    ```bash
-    cd frontend
-    npm install
-    cd ..
-    ```
+
+Step 2: Set Up the Backend
+
+# Create a virtual environment
+python -m venv .venv
+
+# Activate it
+# For Windows:   .\.venv\Scripts\Activate.ps1
+
+# For macOS/Linux:  source .venv/bin/activate
+
+# Move into the backend folder
+cd backend
+
+# Install required Python packages
+pip install -r requirements.txt
+
+# Go back to the main directory
+cd ..
+
+
+Step 3: Download the LLM
+
+ollama pull llama3:8b
+
+Step 4: Set Up the Frontend
+
+cd frontend
+npm install
+cd ..
+
+✅ Installation Done!
+
+You’ve now installed everything needed for DocuMind.AI.
+Next — let’s run the project 🚀
+
+
 
 ---
 
 ## 🚀 Usage
 
-1.  **Ensure Ollama server is running.**
-2.  **Start the Backend Server:**
-    ```bash
-    cd backend
-    uvicorn main:app --reload
-    ```
-    *(API will be live at `http://127.0.0.1:8000`)*
-3.  **Start the Frontend Development Server:**
-    ```bash
-    cd frontend
-    npm run dev
-    ```
-    *(Access the application via the URL provided by Vite, usually `http://localhost:5173` or similar)*
-4.  **Interact:**
-    * Upload documents using the UI.
-    * Ask questions in the chat.
-    * Request reports (e.g., "Generate a report with Introduction and Summary"). Download the resulting PDF.
+Step 1: Start Ollama
+Before running anything else, make sure the Ollama server is active:   ollama serve
+
+Step 2: Run the Backend
+Start the FastAPI server:
+
+cd backend
+uvicorn main:app --reload
+
+Step 3: Run the Frontend
+Open a new terminal (keep the backend running), then start the React app:
+
+cd frontend
+npm run dev
+
+
+Step 4: Interact with DocuMind.AI
+
+Open the link shown in the terminal 
+
+Upload a PDF, DOCX, or image file.
+
+Ask any question like:
+
+“Summarize this document.”
+
+“List all key points.”
+
+“Extract data from the table.”
+
+Generate structured reports and download them as PDFs.
+
+🎯 Everything runs locally — no internet upload, no data leaks.
 
 ---
 
-## 💡 Future Work / Improvements
+💡 Future Work / Improvements
 
-* Implement robust, non-placeholder logic for `extract_figures_tables` tool.
-* Improve error handling and user feedback mechanisms.
-* Add user authentication and document management.
-* Enhance prompt engineering for more reliable agent behavior and report quality.
-* Optimize embedding and retrieval strategies.
-* Implement persistent chat history.
-* Explore deploying the application using Docker.
+Improve figure and table extraction for research papers.
 
----
+Enhance report formatting with templates and styles.
 
-## 👋 About Me
+Add user authentication and document management dashboard.
 
-Hi, I'm **Mandadi pavan sai kumar **! I'm passionate about exploring the intersection of Artificial Intelligence and practical applications, especially in areas like healthcare technology and natural language processing. This project was an exciting challenge to build a full-stack application integrating RAG, agentic workflows with LangGraph, and local LLMs.
+Integrate persistent chat history.
 
-I'm always learning and looking for ways to improve. Feel free to connect or check out my other projects!
+Fine-tune retrieval logic for large or mixed-format documents.
 
-* **GitHub:** [github.com/mandadipavansai](https://github.com/mandadipavansai)
-* **[Optional: LinkedIn Profile URL]**
-* **[Optional: Portfolio URL]**
+Add Docker support for one-step deployment.
 
 ---
 
-## 📄 License
 
-[Choose a license like MIT, Apache 2.0, or state 'Proprietary' if applicable. If open source, you might add:]
-Licensed under the MIT License. See the `LICENSE` file for details.
+
+👤 About Me
+
+Hi, I’m Mandadi Pavan Sai Kumar — a developer passionate about building real-world AI tools that solve practical problems.
+
+This project started as a healthcare assistant but evolved into a universal document intelligence tool. I wanted to create something that helps anyone — students, researchers, analysts, or professionals — get instant insights from complex files without having to read them line by line.
+
+I’m constantly exploring how LLMs and agent systems can make knowledge extraction more natural and accessible.
+
+* GitHub: github.com/mandadipavansai
+* LinkedIn: https://www.linkedin.com/in/pavan-sai-kumar-mandadi-533371266/
+
+  
+---
